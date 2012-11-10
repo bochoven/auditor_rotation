@@ -1,0 +1,20 @@
+XS97L	V01 1a2a3a (CFO low, NAS absent, No measures)	20
+BSND8	V02 1a2a3b (CFO low, NAS absent, Rotation)	20
+DFUR4	V03 1a2a3c (CFO low, NAS absent, Tender 50%)	20
+BALR2	V04 1a2b3a (CFO low, NAS present, No measures)	20
+EF8FS	V05 1a2b3b (CFO low, NAS present, Rotation)	20
+S2X75	V06 1a2b3c (CFO low, NAS present, Tender 50%)	20
+DWJEY	V07 1b2a3a (CFO high, NAS absent, No measures)	20
+7C6WL	V08 1b2a3b (CFO high, NAS absent, Rotation)	
+FGY9T	V09 1b2a3c (CFO high, NAS absent, Tender 50%)	
+6NJG6	V10 1b2b3a (CFO high, NAS present, No measures)	
+PM52K	V11 1b2b3b (CFO high, NAS present, Rotation)	
+HHFBQ	V12 1b2b3c (CFO high, NAS present, Tender 50%)	
+2KDUD	V13 1a2a3d (CFO low, NAS absent, Tender 90%)	
+EUZ9A	V14 1a2a3e (CFO low, NAS absent, Tender 10%)	
+G9PD2	V15 1a2b3d (CFO low, NAS present, Tender 90%)	
+AZ4R4	V16 1a2b3e (CFO low, NAS present, Tender 10%)	
+5CXDG	V17 1b2a3d (CFO high, NAS absent, Tender 90%)	
+L979P	V18 1b2a3e (CFO high, NAS absent, Tender 10%)	
+TH3H3	V19 1b2b3d (CFO high, NAS present, Tender 90%)	
+MD7SU	V20 1b2b3e (CFO high, NAS present, Tender 10%)	
