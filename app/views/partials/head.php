@@ -62,7 +62,8 @@
             <ul class="nav">
               <?$page = $GLOBALS[ 'engine' ]->get_uri_string(); $navlist = array( 
                 'admin/dashboard' => (object) array('icon' => 'dashboard', 'title' => 'Dashboard'), 
-                'admin/versions' => (object) array('icon' => 'wrench', 'title' => 'Versions')
+                'admin/participants' => (object) array('icon' => 'group', 'title' => 'Participants'), 
+                'admin/versions' => (object) array('icon' => 'wrench', 'title' => 'Administration')
                 )?>
                 <?foreach($navlist as $url => $obj):?>
               <li <?=$page==$url?'class="active"':''?>>

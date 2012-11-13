@@ -23,6 +23,13 @@ class admin extends Controller
 
 	}
 
+	function participants()
+	{
+        $data = array();
+		$obj = new View();
+		$obj->view('admin/participants', $data);
+	}
+
 	//===============================================================
 
 	function versions()

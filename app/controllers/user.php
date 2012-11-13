@@ -3,50 +3,114 @@ class user extends Controller
 {
 	function __construct()
 	{
-
+		$this->cookie_name = 'Auditor_rotation';
+		$this->cookie_exp = strtotime( '+30 days' );
+		$this->cookie_path = '/';
 	} 
 
 	//===============================================================
 
-	function index()
+	function index($mode='')
 	{
-		// Is this a new user?
+		$code = '';
 
-		// Get appropriate code
-		$version_obj = new Version();
-
-		// First get versions with a threshold
-		$sql = 'completed < threshold ORDER BY threshold ASC, completed ASC, started ASC';
-		if( ! $version_obj->retrieve_one($sql))
+		// Is this a returning user?
+		if (isset($_COOKIE[$this->cookie_name]))
 		{
-			// Otherwise get the version with the lowest completed
-			$sql = 'id > 0 ORDER BY completed ASC, started ASC';
-			$version_obj->retrieve_one($sql);
+			$part_obj = new Participant();
+			if($part_obj->retrieve_one('cookie=?', $_COOKIE[$this->cookie_name]))
+			{
+				$code = $part_obj->code;
+			}
 		}
-		$code = $version_obj->code;
 
-		// Register this user
-		$version_obj->started = $version_obj->started + 1;
-		$version_obj->save();
-
-		echo $version_obj->code;
-
-		// Redirect to survey FIXME wijst nu naar test
-		redirect('http://ic.vupr.nl/survey/index.php?sid=58328&newtest=Y&lang=en&58328X15X88='.$code);
-	}
-
-	public function completed($value='')
-	{
-		$version_obj = new Version();
-		if($version_obj->retrieve_one('code=?', $value))
+		if ( ! $code)
 		{
-			$version_obj->completed = $version_obj->completed + 1;
+			// Get appropriate code
+			$version_obj = new Version();
+
+			// First get versions with a threshold
+			$sql = 'completed < threshold ORDER BY threshold ASC, completed ASC, started ASC';
+			if( ! $version_obj->retrieve_one($sql))
+			{
+				// Otherwise get the version with the lowest completed
+				$sql = 'id > 0 ORDER BY completed ASC, started ASC';
+				$version_obj->retrieve_one($sql);
+			}
+
+			$code = $version_obj->code;
+
+			// Register this user
+			$part_obj = new Participant();
+			$part_obj->code = $code;
+			$part_obj->send_date = date('Y-m-d H:i:s');
+			$part_obj->ip = $_SERVER['REMOTE_ADDR'];
+			$part_obj->save();
+			$part_obj->cookie = hash('sha256', $part_obj->id);
+			$part_obj->save();
+
+			// Store cookie
+			if( ! setcookie($this->cookie_name , $part_obj->cookie, $this->cookie_exp, $this->cookie_path))
+			{
+				die('Could not set cookie');
+			}
+
+			// Increase started counter
+			$version_obj->started = $version_obj->started + 1;
 			$version_obj->save();
 		}
 
-		echo 'Completed';
+		if ($mode == 'debug')
+		{
+			echo $code;
+		}
+		else
+		{
+			// Redirect to survey FIXME wijst nu naar test
+			redirect('http://ic.vupr.nl/survey/index.php?sid=58328&newtest=Y&lang=en&58328X15X88='.$code);
+		}
+		
 	}
 
-	
+	/**
+	 * Completed, called by ending page of survey
+	 * sets return_date on participant record and
+	 * Increases the completed counter
+	 *
+	 * @return void
+	 * @author 
+	 **/
+	public function completed($value='')
+	{
+		if (isset($_COOKIE[$this->cookie_name]))
+		{
+			$part_obj = new Participant();
+			if($part_obj->retrieve_one('cookie=?', $_COOKIE[$this->cookie_name]))
+			{
+				if($part_obj->return_date)
+				{
+					// Partner already returned
+				}
+				else
+				{
+					$part_obj->return_date = date('Y-m-s H:i:s');
+					$part_obj->save();
+
+					$code = $part_obj->code;
+					$version_obj = new Version();
+					if($version_obj->retrieve_one('code=?', $code))
+					{
+						$version_obj->completed = $version_obj->completed + 1;
+						$version_obj->save();
+					}
+				}
+
+			}
+		}
+
+		
+
+		//echo 'Completed';
+	}	
 
 }
