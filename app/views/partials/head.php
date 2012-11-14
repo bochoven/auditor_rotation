@@ -24,6 +24,10 @@
           font-style:normal;
           padding-left: .5em;
         }
+      .well h3
+      {
+        margin-top: 0;
+      }
     </style>
     <link href="<?=WEB_FOLDER?>assets/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="<?=WEB_FOLDER?>assets/css/font-awesome.css" rel="stylesheet">

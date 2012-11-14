@@ -66,8 +66,11 @@ class user extends Controller
 		}
 		else
 		{
-			// Redirect to survey FIXME wijst nu naar test
-			redirect('http://ic.vupr.nl/survey/index.php?sid=58328&newtest=Y&lang=en&58328X15X88='.$code);
+			// Redirect to survey
+			$sobj = new Setting();
+			$url = $sobj->get_prop('url');
+			$qid = $sobj->get_prop('question');
+			redirect($url.'&'.$qid.'='.$code);
 		}
 		
 	}

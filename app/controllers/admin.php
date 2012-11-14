@@ -42,6 +42,23 @@ class admin extends Controller
 
 	//===============================================================
 
+	function save_settings()
+	{
+        $setting_obj = new Setting();
+        foreach($_POST as $k => $v)
+        {
+			$setting_obj->id = 0;
+        	$setting_obj->retrieve_one('prop=?', $k);
+        	$setting_obj->prop = $k;
+        	$setting_obj->val = $v;
+        	$setting_obj->save();
+        }
+	}
+
+
+
+	//===============================================================
+
 	function submit()
 	{
 		if($_FILES)
