@@ -107,7 +107,7 @@ class user extends Controller
 				}
 				else
 				{
-					$part_obj->return_date = date('Y-m-s H:i:s');
+					$part_obj->return_date = date('Y-m-d H:i:s');
 					$part_obj->save();
 
 					$code = $part_obj->code;
