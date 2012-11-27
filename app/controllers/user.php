@@ -10,7 +10,18 @@ class user extends Controller
 
 	//===============================================================
 
-	function index($mode='')
+	function index()
+	{
+
+		$data = array();
+		$obj = new View();
+		$obj->view('user/intro', $data);
+
+	}
+
+	//===============================================================
+
+	function to_survey($mode='')
 	{
 		$code = '';
 
@@ -92,7 +103,7 @@ class user extends Controller
 			{
 				if($part_obj->return_date)
 				{
-					// Partner already returned
+					// Participant already returned
 				}
 				else
 				{
@@ -107,6 +118,10 @@ class user extends Controller
 						$version_obj->save();
 					}
 				}
+
+			}
+			else // No cookie
+			{
 
 			}
 		}

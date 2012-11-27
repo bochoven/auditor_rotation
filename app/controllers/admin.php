@@ -3,7 +3,10 @@ class admin extends Controller
 {
 	function __construct()
 	{
-		// Auth here
+		if( ! isset($_SESSION['user']))
+		{
+			redirect('auth/login/admin');
+		}	
 	} 
 
 	//===============================================================

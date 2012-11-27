@@ -61,7 +61,9 @@
           <a class="brand" href="#">Auditor Rotation</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
-              Logged in as <a href="#" class="navbar-link">Username</a>
+              <?if(isset($_SESSION['user'])):?>
+              Logout <a href="<?=url('auth/logout')?>" class="navbar-link"><?=$_SESSION['user']?></a>
+              <?endif?>
             </p>
             <ul class="nav">
               <?$page = $GLOBALS[ 'engine' ]->get_uri_string(); $navlist = array( 
