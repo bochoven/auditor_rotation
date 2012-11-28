@@ -6,6 +6,20 @@
       </div><!--/row-->
 
       <div class="row">
+        <div class="span12">
+          <div class="well clearfix hide inactive status">
+            <a style="margin-left: 30px" href="<?=url('admin/set_status/active')?>" style="margin-left: 30px" class="btn btn-success btn-large pull-right">Start <i class="icon-ok-sign"></i></a>
+        Survey redirection is currently inactive, press start to activate. This will reset all the counters from the previous run. After the redirection has been activated, you cannot upload a new excel document or change the values below.
+          </div>
+          <div class="well clearfix hide active status">
+            <a style="margin-left: 30px" href="<?=url('admin/set_status/inactive')?>" class="btn btn-danger btn-large pull-right">Stop <i class="icon-remove-sign"></i></a>
+            Survey redirection is currently active, press stop to de-activate.
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
 
         <div class="span8">
 
@@ -143,6 +157,44 @@
     {
       $('button[type=submit]').addClass('btn-success').text('Uploading...');
     })
+  </script>
+
+    <script type="text/javascript">
+
+    update_status();
+
+    $('.status a').click(function(e){
+      e.preventDefault();
+
+      // Ask for confirmation
+      var answer = confirm("Are you sure you want to change the status?")
+      if (answer){
+        $.get( $(this).attr('href'),
+        function( data ) {
+          update_status();
+          }
+        );
+      }
+      
+    });
+
+    function update_status()
+    {
+      $.get( '<?=url('admin/xhttp_get_status')?>',
+          function( data ) {
+            $('.status').hide().filter('.' + data.status).show();
+              if(data.status == 'active')
+              {
+                $('input').attr('disabled', 'disabled');
+              }
+              else
+              {
+                $('input').removeAttr('disabled');
+              }
+            },
+        'json'
+        );
+    }
   </script>
 
 

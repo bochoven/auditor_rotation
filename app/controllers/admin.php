@@ -45,10 +45,16 @@ class admin extends Controller
 
 	//===============================================================
 
-	function save_settings()
+	function save_settings($settings = '')
 	{
+        // Use $_POST if no $settings passed
+        if( ! is_array($settings))
+        {
+        	$settings = $_POST;
+        }
+
         $setting_obj = new Setting();
-        foreach($_POST as $k => $v)
+        foreach($settings as $k => $v)
         {
 			$setting_obj->id = 0;
         	$setting_obj->retrieve_one('prop=?', $k);
@@ -58,6 +64,47 @@ class admin extends Controller
         }
 	}
 
+	//===============================================================
+
+	function xhttp_get_status()
+	{
+		$out = array('status' => 'inactive');
+
+		$setting_obj = new Setting();
+		if($setting_obj->retrieve_one('prop=?', 'status'))
+		{
+			$out['status'] = $setting_obj->val;
+		}
+		echo json_encode($out);
+	}
+
+	//===============================================================
+
+	function set_status($status = 'inactive')
+	{
+		if($status == 'active')
+		{
+			// Reset counters
+			$v_obj = new Version();
+			$v_obj->reset_counters();
+
+			// Reset participants
+			$p_obj = new Participant();
+			$p_obj->delete_all();
+
+			// Save start date
+			$settings['started'] = date('Y-m-d h:i:s');
+			$settings['stopped'] = '';
+		}
+		else
+		{
+			$settings['stopped'] = date('Y-m-d h:i:s');
+		}
+
+		$settings['status'] = $status;
+
+		$this->save_settings($settings);
+	}
 
 
 	//===============================================================

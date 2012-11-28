@@ -15,7 +15,16 @@ class user extends Controller
 
 		$data = array();
 		$obj = new View();
-		$obj->view('user/intro', $data);
+
+		$setting_obj = new Setting();
+		if($setting_obj->get_prop('status') == 'active')
+		{
+			$obj->view('user/intro', $data);
+		}
+		else
+		{
+			$obj->view('user/inactive', $data);
+		}
 
 	}
 
@@ -96,6 +105,13 @@ class user extends Controller
 	 **/
 	public function completed($value='')
 	{
+		// Check if we're active
+		$setting_obj = new Setting();
+		if($setting_obj->get_prop('status') != 'active')
+		{
+			return;
+		}
+
 		if (isset($_COOKIE[$this->cookie_name]))
 		{
 			$part_obj = new Participant();

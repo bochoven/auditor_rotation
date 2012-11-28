@@ -18,5 +18,18 @@ class Version extends Model {
                   $this->retrieve($id);
         }
 
+        function reset_counters()
+        {
+        	$dbh=$this->getdbh();
+        	$fields = array('started', 'completed');
+			$s='';
+			foreach ( $fields as $k )
+				$s .= ', '.$this->enquote( $k ).'=0';
+			$s = substr( $s, 1 );
+			$sql = 'UPDATE '.$this->enquote( $this->tablename ).' SET '.$s;
+			$stmt = $dbh->prepare( $sql );
+			return $stmt->execute();
+        }
+
 
 }
