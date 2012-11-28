@@ -1,35 +1,46 @@
 <?php
 class user extends Controller
 {
+	private $active = '';
+
 	function __construct()
 	{
 		$this->cookie_name = 'Auditor_rotation';
 		$this->cookie_exp = strtotime( '+30 days' );
 		$this->cookie_path = '/';
+
+		// Get status
+		$setting_obj = new Setting();
+		$this->active = $setting_obj->get_prop('status') == 'active';
 	} 
 
 	//===============================================================
 
 	function index()
 	{
+		if( ! $this->active)
+		{
+			redirect('user/inactive');
+		}
+
+		// Is this a returning user?
+		if (isset($_COOKIE[$this->cookie_name]))
+		{
+			$part_obj = new Participant();
+			if($part_obj->retrieve_one('cookie=?', $_COOKIE[$this->cookie_name]))
+			{
+				redirect('user/to_survey');
+			}
+		}
 
 		$data = array();
 		$obj = new View();
-
-		$setting_obj = new Setting();
-		if($setting_obj->get_prop('status') == 'active')
-		{
-			$obj->view('user/intro', $data);
-		}
-		else
-		{
-			$obj->view('user/inactive', $data);
-		}
-
+		$obj->view('user/intro', $data);
 	}
 
 
 	//===============================================================
+
 	function nomore()
 	{
 		$data = array();
@@ -38,9 +49,24 @@ class user extends Controller
 	}
 
 	//===============================================================
+	
+	function inactive()
+	{
+		$data = array();
+		$obj = new View();
+		$obj->view('user/inactive', $data);
+	}
+
+	//===============================================================
 
 	function to_survey($mode='')
 	{
+		// Check if we're active
+		if( ! $this->active)
+		{
+			redirect('user/inactive');
+		}
+
 		$code = '';
 
 		// Is this a returning user?
@@ -49,6 +75,12 @@ class user extends Controller
 			$part_obj = new Participant();
 			if($part_obj->retrieve_one('cookie=?', $_COOKIE[$this->cookie_name]))
 			{
+				// Check if already completed
+				if($part_obj->return_date)
+				{
+					redirect('user/nomore');
+				}
+
 				$code = $part_obj->code;
 			}
 		}
@@ -89,12 +121,6 @@ class user extends Controller
 			$version_obj->save();
 		}
 
-		// Check if already completed
-		if(TRUE OR $part_obj->return_date)
-		{
-			redirect('user/nomore');
-		}
-
 		if ($mode == 'debug')
 		{
 			echo $code;
@@ -121,8 +147,7 @@ class user extends Controller
 	public function completed($value='')
 	{
 		// Check if we're active
-		$setting_obj = new Setting();
-		if($setting_obj->get_prop('status') != 'active')
+		if( ! $this->active)
 		{
 			return;
 		}
