@@ -28,6 +28,15 @@ class user extends Controller
 
 	}
 
+
+	//===============================================================
+	function nomore()
+	{
+		$data = array();
+		$obj = new View();
+		$obj->view('user/nomore', $data);
+	}
+
 	//===============================================================
 
 	function to_survey($mode='')
@@ -78,6 +87,12 @@ class user extends Controller
 			// Increase started counter
 			$version_obj->started = $version_obj->started + 1;
 			$version_obj->save();
+		}
+
+		// Check if already completed
+		if(TRUE OR $part_obj->return_date)
+		{
+			redirect('user/nomore');
 		}
 
 		if ($mode == 'debug')
