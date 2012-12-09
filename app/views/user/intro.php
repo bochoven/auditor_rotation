@@ -49,22 +49,32 @@
 <div class="survey-survey-language welcome-page"></div>
 <div class="survey-welcome"><h1 style="text-align: left; ">
 	Inleiding</h1>
-Het accountantsberoep is onder invloed van een sterk veranderende maatschappelijke omgeving volop in beweging. Met het oog op deze turbulente tijden is de VU Universiteit Amsterdam gestart met een onderzoek naar de oordeelsvorming van openbaar accountants. Het onderzoek wordt ondersteund door de Nederlandse Beroepsorganisatie van Accountants (NBA). Met het onderzoek wordt beoogd een waardevolle bijdrage te leveren aan de bestaande literatuur. Daarnaast verwachten wij dat het onderzoek belangrijke handvatten kan bieden voor de verdere ontwikkeling van het accountantsberoep. Het is ons streven om de resultaten van het onderzoek te publiceren in een internationaal erkend wetenschappelijk tijdschrift.<br />
-<br />
-Wij stellen het zeer op prijs indien u aan dit onderzoek deelneemt door een korte casus te lezen en vervolgens enkele vragen te beantwoorden.<br />
-<br />
-Onze onderzoeksopzet vereist dat een groot aantal openbaar accountants participeert. Daarom hebben wij het aantal vragen beperkt en kost deelname niet meer dan 15 minuten van uw tijd. Bovendien doneren wij, op voordracht van de NBA, voor elke deelnemer een bedrag van € 2,- aan het Revalidatiefonds en verloten wij drie Nationale Diner Cheques ter waarde van € 100,- onder de respondenten.<br />
-<br />
-De uitkomsten van het onderzoek, alsmede het totaal gedoneerde bedrag zullen in de eerste helft van 2013 gepubliceerd worden op de website van de NBA en de VU Universiteit. <br />
-<br />
-Wij hopen dat u 15 minuten van uw kostbare tijd wilt investeren om ons te helpen dit onderzoeksproject uit te voeren. <br />
-<br />
-Bij voorbaat onze hartelijke dank voor uw deelname,<br />
-<br />
-<i>Dr. Anna Gold&nbsp;&nbsp;&nbsp;<br />
-Dr. Patrick Klijnsmit<br />
-Prof. Dr. Philip Wallage<br />
-Prof. Dr. Arnold Wright<br /></i>
+<p>Het accountantsberoep is onder invloed van een sterk veranderende maatschappelijke omgeving volop in beweging. Met het oog op deze turbulente tijden is de VU Universiteit Amsterdam gestart met een onderzoek naar de oordeelsvorming van openbaar accountants. Het onderzoek wordt ondersteund door de Nederlandse Beroepsorganisatie van Accountants (NBA). Met het onderzoek wordt beoogd een waardevolle bijdrage te leveren aan de bestaande literatuur. Daarnaast verwachten wij dat het onderzoek belangrijke handvatten kan bieden voor de verdere ontwikkeling van het accountantsberoep. Het is ons streven om de resultaten van het onderzoek te publiceren in een internationaal erkend wetenschappelijk tijdschrift.</p>
+
+<p>Wij stellen het zeer op prijs indien u aan dit onderzoek deelneemt door een korte casus te lezen en vervolgens enkele vragen te beantwoorden.</p>
+
+<p>Onze onderzoeksopzet vereist dat een groot aantal openbaar accountants participeert. Daarom hebben wij het aantal vragen beperkt en kost deelname niet meer dan 15 minuten van uw tijd. Bovendien doneren wij, op voordracht van de NBA, voor elke deelnemer een bedrag van € 2,- aan het Revalidatiefonds en verloten wij drie Nationale Diner Cheques ter waarde van € 100,- onder de respondenten.</p>
+
+<p>De uitkomsten van het onderzoek, alsmede het totaal gedoneerde bedrag zullen in de eerste helft van 2013 gepubliceerd worden op de website van de NBA en de VU Universiteit.</p>
+
+<p>Wij hopen dat u 15 minuten van uw kostbare tijd wilt investeren om ons te helpen dit onderzoeksproject uit te voeren.</p>
+
+<p>Bij voorbaat onze hartelijk dank voor uw deelname,<br>
+<br>
+Namens de Vrije Universiteit Amsterdam,<br>
+<i>
+Dr. Anna Gold<br>
+Dr. Patrick Klijnsmit<br>
+Prof. Dr. Philip Wallage<br>
+Prof. Dr. Arnold Wright<br>
+</i>
+</p>
+
+<dl>
+<dt>N.B.</dt>	
+<dd>Wij vragen uw aandacht voor het feit dat de casus en de vragen in één sessie moeten worden doorlopen. Het is dus niet mogelijk om uw voortgang tussentijds op te slaan. Wilt u er daarom rekening mee houden dat u ongeveer 15 minuten beschikbaar heeft alvorens te starten met het onderzoek?</dd>
+</dl>
+
 </div>
 <!-- <div class="numquestions"></div> -->
 
