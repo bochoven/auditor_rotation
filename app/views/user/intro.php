@@ -49,7 +49,7 @@
 <div class="survey-survey-language welcome-page"></div>
 <div class="survey-welcome"><h1 style="text-align: left; ">
 	Inleiding</h1>
-<p>Het accountantsberoep is onder invloed van een sterk veranderende maatschappelijke omgeving volop in beweging. Met het oog op deze turbulente tijden is de VU Universiteit Amsterdam gestart met een onderzoek naar de oordeelsvorming van openbaar accountants. Het onderzoek wordt ondersteund door de Nederlandse Beroepsorganisatie van Accountants (NBA). Met het onderzoek wordt beoogd een waardevolle bijdrage te leveren aan de bestaande literatuur. Daarnaast verwachten wij dat het onderzoek belangrijke handvatten kan bieden voor de verdere ontwikkeling van het accountantsberoep. Het is ons streven om de resultaten van het onderzoek te publiceren in een internationaal erkend wetenschappelijk tijdschrift.</p>
+<p>Het accountantsberoep is onder invloed van een sterk veranderende omgeving volop in beweging. In deze turbulente tijden is de VU Universiteit Amsterdam gestart met een onderzoek naar de oordeelsvorming van openbaar accountants. Het onderzoek wordt ondersteund door de Nederlandse Beroepsorganisatie van Accountants (NBA). Met het onderzoek wordt beoogd een waardevolle bijdrage te leveren aan de bestaande literatuur. Daarnaast verwachten wij dat het onderzoek belangrijke handvatten kan bieden voor de verdere ontwikkeling van het accountantsberoep. Het is ons streven om de resultaten van het onderzoek te publiceren in een internationaal erkend wetenschappelijk tijdschrift.</p>
 
 <p>Wij stellen het zeer op prijs indien u aan dit onderzoek deelneemt door een korte casus te lezen en vervolgens enkele vragen te beantwoorden.</p>
 
