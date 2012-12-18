@@ -55,7 +55,7 @@
 
 <p>Onze onderzoeksopzet vereist dat een groot aantal openbaar accountants participeert. Daarom hebben wij het aantal vragen beperkt en kost deelname niet meer dan 15 minuten van uw tijd. Bovendien doneren wij, op voordracht van de NBA, voor elke deelnemer een bedrag van € 2,- aan het Revalidatiefonds en verloten wij drie Nationale Diner Cheques ter waarde van € 100,- onder de respondenten.</p>
 
-<p>De uitkomsten van het onderzoek, alsmede het totaal gedoneerde bedrag zullen in de eerste helft van 2013 gepubliceerd worden op de website van de NBA en de VU Universiteit.</p>
+<p>De uitkomsten van het onderzoek, alsmede het totaal gedoneerde bedrag zullen medio 2013 gepubliceerd worden op de website van de NBA en de VU Universiteit.</p>
 
 <p>Wij hopen dat u 15 minuten van uw kostbare tijd wilt investeren om ons te helpen dit onderzoeksproject uit te voeren.</p>
 
