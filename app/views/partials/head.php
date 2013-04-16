@@ -58,7 +58,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Auditor Rotation</a>
+          <a class="brand" href="#"><?=$GLOBALS['shortname']?></a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
               <?if(isset($_SESSION['user'])):?>

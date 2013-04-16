@@ -149,7 +149,7 @@ class admin extends Controller
 				}
 
 				// Move excel to downloads folder
-				move_uploaded_file($_FILES['file']['tmp_name'], APP_ROOT . 'downloads/Auditor_rotation.xls');
+				move_uploaded_file($_FILES['file']['tmp_name'], APP_ROOT . 'downloads/'.$GLOBALS['shortname'].'.xls');
 
 			}
 			else
