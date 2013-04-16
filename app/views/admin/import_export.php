@@ -33,9 +33,15 @@
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="questionId">Question ID</label>
+              <label class="control-label" for="questionId">Condition Question ID</label>
               <div class="controls">
                 <input type="text" class="input-large" id="questionId" name='question' placeholder="x987097xx" value="<?=$sobj->get_prop('question')?>">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="rquestionId">Respondent Question ID</label>
+              <div class="controls">
+                <input type="text" class="input-large" id="rquestionId" name='rquestion' placeholder="x987097xx" value="<?=$sobj->get_prop('rquestion')?>">
               </div>
             </div>
             <div class="form-actions hide" style="margin-bottom: 0; padding-bottom: 0">
@@ -97,25 +103,14 @@
 
   <script type="text/javascript">
     
-    $('#url').keyup(function(event) {
+    $('#url, #questionId, #rquestionId').keyup(function(event) {
       if (event.which == 13) {
          event.preventDefault();
        }
        update_link();
        show_actions();
     });
-    $('#questionId').keyup(function(event) {
-      if (event.which == 13) {
-         event.preventDefault();
-       }
-       update_link();
-       show_actions();
-    });
-    $('#url').change(function(event) {
-       update_link();
-       show_actions();
-    });
-    $('#questionId').change(function(event) {
+    $('#url, #questionId, #rquestionId').change(function(event) {
        update_link();
        show_actions();
     });
@@ -134,7 +129,9 @@
 
     function update_link()
     {
-      link = $('#url').val() + '&' + $('#questionId').val() + '=' + $('#versionSelect').val();
+      link = $('#url').val() + 
+        '&' + $('#questionId').val() + '=' + $('#versionSelect').val() +
+        '&' + $('#rquestionId').val() + '=testid';
       $('#exampleUrl').val(link);
       $('#exampleLink').attr('href', link);
     }

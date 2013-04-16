@@ -83,3 +83,10 @@ function humanreadablesize($bytes, $decimals = 2) {
         $factor = floor((strlen($bytes) - 1) / 3);
         return sprintf("%.{$decimals}f %sB", $bytes / pow(1024, $factor), $factor?@$sz[$factor]:' ');
 }
+
+function write_log($msg = '')
+{
+    $file = dirname(APP_PATH) . "/eventlog";
+    $msg = sprintf("%s - %s : %s\n", date('Y-m-d H:i:s'), $_SERVER['REMOTE_ADDR'], $msg);
+    file_put_contents($file, $msg, FILE_APPEND | LOCK_EX);
+}

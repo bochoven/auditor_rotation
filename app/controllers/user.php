@@ -5,7 +5,7 @@ class user extends Controller
 
 	function __construct()
 	{
-		$this->cookie_name = 'Auditor_rotation';
+		$this->cookie_name = $GLOBALS['shortname'];
 		$this->cookie_exp = strtotime( '+30 days' );
 		$this->cookie_path = '/';
 
@@ -78,10 +78,20 @@ class user extends Controller
 				// Check if already completed
 				if($part_obj->return_date)
 				{
-					redirect('user/nomore');
-				}
+					// In debug mode, you can run multiple sessions
+					if( ! _DEBUG )
+					{
+						write_log(sprintf('TO_SURVEY id:%s no more', $part_obj->id));
 
-				$code = $part_obj->code;
+						redirect('user/nomore');
+					}
+				}
+				else
+				{
+					write_log(sprintf('TO_SURVEY id:%s returning user', $part_obj->id));
+
+					$code = $part_obj->code;
+				}
 			}
 		}
 
@@ -110,6 +120,9 @@ class user extends Controller
 			$part_obj->cookie = hash('sha256', $part_obj->id);
 			$part_obj->save();
 
+			write_log(sprintf('TO_SURVEY New user, id:%s', $part_obj->id));
+
+
 			// Store cookie
 			if( ! setcookie($this->cookie_name , $part_obj->cookie, $this->cookie_exp, $this->cookie_path))
 			{
@@ -127,11 +140,14 @@ class user extends Controller
 		}
 		else
 		{
+			write_log(sprintf('TO_SURVEY Send id:%s to survey', $part_obj->id));
+
 			// Redirect to survey
 			$sobj = new Setting();
 			$url = $sobj->get_prop('url');
 			$qid = $sobj->get_prop('question');
-			redirect($url.'&'.$qid.'='.$code);
+			$rqid = $sobj->get_prop('rquestion');
+			redirect($url.'&'.$qid.'='.$code.'&'.$rqid.'='.$part_obj->id);
 		}
 		
 	}
@@ -144,7 +160,7 @@ class user extends Controller
 	 * @return void
 	 * @author 
 	 **/
-	public function completed($value='')
+	public function completed($participant_id = '')
 	{
 		// Check if we're active
 		if( ! $this->active)
@@ -152,19 +168,24 @@ class user extends Controller
 			return;
 		}
 
-		if (isset($_COOKIE[$this->cookie_name]))
+		if ($participant_id)
 		{
-			$part_obj = new Participant();
-			if($part_obj->retrieve_one('cookie=?', $_COOKIE[$this->cookie_name]))
+			$part_obj = new Participant($participant_id);
+
+			if($part_obj->send_date)
 			{
 				if($part_obj->return_date)
 				{
 					// Participant already returned
+					write_log(sprintf('COMPLETED id:%s already returned', $participant_id));
+
 				}
 				else
 				{
 					$part_obj->return_date = date('Y-m-d H:i:s');
 					$part_obj->save();
+
+					write_log(sprintf('COMPLETED id:%s successfully', $participant_id));
 
 					$code = $part_obj->code;
 					$version_obj = new Version();
@@ -173,18 +194,35 @@ class user extends Controller
 						$version_obj->completed = $version_obj->completed + 1;
 						$version_obj->save();
 					}
+					else
+					{
+						write_log(sprintf('COMPLETED code:%s not found', $code));
+					}
 				}
 
 			}
-			else // No cookie
+			else // Participant not found 
 			{
-
+				write_log('COMPLETED participant not in db? ' . $participant_id);
 			}
 		}
-
+		else // No participant_id, maybe blocking third party cookies
+		{
+			write_log('COMPLETED, no participant_id');
+		}
 		
+		// Prevent caching
+		header('Content-Type: image/gif;');
+	    header('Cache-Control: no-cache');
+	    
+		// Return a transparent pixel
+		echo base64_decode('R0lGODlhAQABAJEAAAAAAP///////wAAACH5BAEAAAIALAAAAAABAAEAAAICVAEAOw==');
 
-		//echo 'Completed';
-	}	
+	}
+
+	function logtest($msg = '')
+	{
+		write_log(print_r($_COOKIE, TRUE));
+	}
 
 }
