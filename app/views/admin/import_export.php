@@ -79,7 +79,7 @@
 
           <div class="well">
             <p><b>Download excel file</b></p>
-            <a class="btn btn-primary" href="<?=WEB_FOLDER?>downloads/".$GLOBALS['shortname'].".xls"><i class="icon-download-alt"></i> Download</a>
+            <a class="btn btn-primary" href="<?=WEB_FOLDER?>downloads/<?=$GLOBALS['shortname']?>.xls"><i class="icon-download-alt"></i> Download</a>
           </div>
 
           <form id="uploadForm" class="well" action="<?=url('admin/submit')?>" enctype="multipart/form-data"  method="post" accept-charset="utf-8">
