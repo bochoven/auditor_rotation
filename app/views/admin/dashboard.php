@@ -28,16 +28,23 @@
 				<th>Started</th>
 				<th>Completed</th>
 			</tr>
-			<?$vers_obj = new Version();?>
+			<?$vers_obj = new Version();$s=$c=0?>
 			<?foreach ($vers_obj->retrieve_many('id>0 ORDER BY desc') as $version):?>
 			<tr>
 				<td><?=$version->code?></td>
 				<td><?=$version->desc?></td>
 				<td><?=$version->threshold?></td>
-				<td><?=$version->started?></td>
-				<td><?=$version->completed?></td>
+				<td><?=$version->started; $s+=$version->started?></td>
+				<td><?=$version->completed; $c+=$version->completed?></td>
 			</tr>
 			<?endforeach?>
+			<tr>
+				<td></td>
+				<td></td>
+				<th>Total</th>
+				<th><?=$s?></th>
+				<th><?=$c?></th>
+			</tr>
 		</table>
 	</div>
 
